@@ -1,0 +1,49 @@
+<?php
+// Sécurité minimale : une matière est obligatoire
+if (!isset($_GET['matiere']) || empty($_GET['matiere'])) {
+    header("Location: index.php");
+    exit;
+}
+
+$matiere = htmlspecialchars($_GET['matiere']);
+
+include 'templates/header.php';
+?>
+
+<div class="container page">
+
+  <div class="welcome">
+    <h1 class="page-title"><?php echo $matiere; ?></h1>
+    <p class="page-subtitle">Choisissez le type de contenu</p>
+  </div>
+
+  <div class="cards">
+
+    <a class="card" href="cours.php?matiere=<?php echo urlencode($matiere); ?>">
+      📘 Cours
+    </a>
+
+    <a class="card" href="td.php?matiere=<?php echo urlencode($matiere); ?>">
+      📝 TD / TP
+    </a>
+
+    <a class="card" href="khints.php?matiere=<?php echo urlencode($matiere); ?>">
+      💡 Khints
+    </a>
+
+    <a class="card" href="ressources.php?matiere=<?php echo urlencode($matiere); ?>">
+      🌍 Ressources complémentaires
+    </a>
+
+    <a class="card" href="github.php?matiere=<?php echo urlencode($matiere); ?>">
+      🧑‍💻 GitHub
+    </a>
+
+  </div>
+
+  <div class="back-link">
+  </div>
+
+</div>
+
+<?php include 'templates/footer.php'; ?>
